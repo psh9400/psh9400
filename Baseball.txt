@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+int main()
+{
+	// 0~9까지 난수 생성(중복되지 않음)
+	int answer0;
+	int answer1;
+	int answer2;
+
+	answer0 = rand() % 10;
+	answer1 = rand() % 10;
+	answer2 = rand() % 10;
+
+	//세 개의 숫자를 입력한다(추측)
+	while (1)
+	{
+		int guess0;
+		int guess1;
+		int guess2;
+
+		cin >> guess0;
+		getwchar(); // 엔터를 지움
+		cin >> guess1;
+		getwchar();
+		cin >> guess2;
+		getwchar();
+
+		cout << "[추측] ";
+		cout << guess0 << ' ';
+		cout << guess1 << ' ';
+		cout << guess2 << ' ';
+		cout << endl;
+
+		//결과를 계산하고 출력
+		int strike = 0;
+		int ball = 0;
+		int out = 0;
+
+		//answer0
+		if (answer0 == guess0)
+			strike++;
+		else if (answer0 == guess1 || answer0 == guess2)
+			ball++;
+		else
+			out++;
+		//answer1
+		if (answer1 == guess1)
+			strike++;
+		else if (answer1 == guess2 || answer1 == guess0)
+			ball++;
+		else
+			out++;
+		//answer2
+		if (answer2 == guess2)
+			strike++;
+		else if (answer2 == guess1 || answer2 == guess0)
+			ball++;
+		else
+			out++;
+
+		//결과
+
+		cout << "[S] " << strike << "[B] " << ball << "[O] " << out << endl;
+		if (strike == 3)
+		{
+			break;
+		}
+	}
+		return 0;
+	
+}
