@@ -2,11 +2,11 @@
 #include <stdlib.h>
 using namespace std;
 
-void swap(int i, int j)
+void swap(int* i,int* j)
 {
-	int t = i;
-	i = j;
-	j = t;
+	int t = *i;
+	*i = *j;
+	*j = t;
 }
 
 int main()
@@ -16,7 +16,7 @@ int main()
 
 	//swap(a, b);
 
-	swap(a, b);
+	swap(&a, &b);
 
 	cout << a << endl;
 	cout << b << endl;
